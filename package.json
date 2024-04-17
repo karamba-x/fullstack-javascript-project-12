@@ -4,6 +4,7 @@
   "description": "[![Actions Status](https://github.com/karamba-x/fullstack-javascript-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/karamba-x/fullstack-javascript-project-12/actions)",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm ci --prefix frontend",
     "build": "npm run build --prefix frontend",
     "start": "start-server -s ./frontend/build",
     "test": "echo \"Error: no test specified\" && exit 1"
