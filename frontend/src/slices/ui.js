@@ -1,4 +1,4 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const slice = createSlice({
   name: 'ui',
@@ -9,10 +9,13 @@ const slice = createSlice({
   reducers: {
     setCurrentChannel(state, { payload }) {
       const { channelId } = payload;
-      state.currentChannelId = channelId;
+      return {
+        ...state,
+        currentChannelId: channelId,
+      };
     },
-  }
-})
+  },
+});
 
 export const { actions } = slice;
 export default slice.reducer;

@@ -8,7 +8,7 @@ export const messagesApi = createApi({
       const { auth } = getState();
       headers.set('Authorization', `Bearer ${auth.token}`);
       return headers;
-    }
+    },
   }),
   tagTypes: ['Messages'],
   endpoints: (builder) => ({
