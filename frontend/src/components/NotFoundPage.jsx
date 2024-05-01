@@ -1,18 +1,18 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import notFound from '../assets/notFound.jpg';
 
 const NotFoundPage = () => {
-  // const { t } = useTranslation();
-  console.log('');
+  const { t } = useTranslation();
   return (
     <div className="text-center">
-      <img alt="not found" className="img-fluid h-25" src={notFound} />
+      <img alt={t('notFound.header')} className="img-fluid h-25" src={notFound} />
       <h1 className="h4 text-muted">
-        Страница не найдена
+        {t('notFound.header')}
       </h1>
       <p className="text-muted">
-        Но вы можете перейти на
-        <a href="/">главную страницу</a>
+        {t('notFound.message')}
+        <a href="/">{t('notFound.linkText')}</a>
       </p>
     </div>
   );

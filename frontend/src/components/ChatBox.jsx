@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { useGetChannels } from '../services/channelsApi';
 import { useGetMessages } from '../services/messagesApi';
 import NewMessageForm from './NewMessageForm';
@@ -13,6 +14,7 @@ const Message = ({ username, body }) => (
 );
 
 const ChatBox = () => {
+  const { t } = useTranslation();
   const { data: channels } = useGetChannels();
   const { data: allMessages } = useGetMessages();
 
@@ -36,7 +38,7 @@ const ChatBox = () => {
           </b>
         </p>
         <span className="text-muted">
-          {`${messages.length} сообщений`}
+          {`${messages.length} ${t('chat.messageCount', { count: messages.length })}`}
         </span>
       </div>
       <div id="messages-box" className="chat-messages overflow-auto px-5 ">
@@ -49,7 +51,7 @@ const ChatBox = () => {
         ))}
       </div>
       <div className="mt-auto px-5 py-3">
-        <NewMessageForm />
+        <NewMessageForm channel={channel} />
       </div>
     </div>
   );
