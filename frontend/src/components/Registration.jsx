@@ -6,6 +6,7 @@ import { Button, Form } from 'react-bootstrap';
 import * as yup from 'yup';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { useRollbar } from '@rollbar/react';
 import avatarImages from '../assets/avatar_1.jpg';
 import { actions } from '../slices/index.js';
 import routes from '../routes.js';
@@ -16,7 +17,7 @@ const Registration = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  // const rollbar = useRollbar();
+  const rollbar = useRollbar();
   useEffect(() => {
     inputRef.current.focus();
   }, []);
@@ -57,7 +58,7 @@ const Registration = () => {
         dispatch(actions.login(res.data));
         navigate(routes.chatPagePath());
       } catch (err) {
-        // rollbar.error(err);
+        rollbar.error(err);
         if (!err.isAxiosError) {
           throw err;
         }

@@ -2,7 +2,7 @@ install:
 	npm ci
 
 start:
-	ESLINT_NO_DEV_ERRORS=true npm start
+	npm start
 	
 build:
 	npm build
