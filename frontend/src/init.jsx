@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { ToastContainer } from 'react-toastify';
 import leoProfanity from 'leo-profanity';
-import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
+// import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import App from './components/App';
 import resources from './locales/index.js';
 import reducer, { actions } from './slices/index.js';
@@ -60,23 +60,18 @@ const init = async (socket) => {
     }));
   });
 
-  const rollbarConfig = {
-    accessToken: '56867251a44a46c6aa21e41e7d732359',
-    environment: 'testenv',
-  };
+  // const rollbarConfig = {
+  //   accessToken: '56867251a44a46c6aa21e41e7d732359',
+  //   environment: 'testenv',
+  // };
 
   return (
-    <RollbarProvider config={rollbarConfig}>
-      <ErrorBoundary>
-        <I18nextProvider i18n={i18n}>
-          <Provider store={store}>
-            <App />
-            <ToastContainer />
-          </Provider>
-        </I18nextProvider>
-      </ErrorBoundary>
-    </RollbarProvider>
-
+    <I18nextProvider i18n={i18n}>
+      <Provider store={store}>
+        <App />
+        <ToastContainer />
+      </Provider>
+    </I18nextProvider>
   );
 };
 
